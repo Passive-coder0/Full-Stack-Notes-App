@@ -1,0 +1,20 @@
+{
+  "name": "notes-app-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "kill-port 8000 && nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "kill-port": "^2.0.1",
+    "mongoose": "^8.8.4",
+    "nodemon": "^3.1.7"
+  }
+}
