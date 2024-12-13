@@ -16,19 +16,15 @@ mongoose.connect(config.connectionString);
 let db = mongoose.connection;
 db.once("open", () => console.log("Connected to database"));
 
-//Express
+//Express parser
 app.use(express.json());
 
-//origin: "*" means that any website can access the resources on your server.
+//origin: "*" means that any website can access the resources on my server.
 app.use(
   cors({
-    origin: "",
+    origin: '*',
   })
 );
-
-app.get("/", (req, res) => {
-  res.json({ data: "hello" });
-});
 
 // Create Account
 app.post("/create-account", async (req, res) => {
@@ -69,6 +65,7 @@ app.post("/create-account", async (req, res) => {
   const accessToken = jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "30m",
   });
+
 
   return res.json({
     error: false,
@@ -124,7 +121,7 @@ app.get("/get-user", authenticateToken, async (req, res) => {
   const isUser = await User.findOne({ _id: user._id });
 
   if (!isUser) {
-    return res.sendStatus(401).json({ message: "No user with this ID" });
+    return res.status(401).json({ message: "No user with this ID" });
   }
 
   return res.json({
@@ -133,10 +130,12 @@ app.get("/get-user", authenticateToken, async (req, res) => {
   });
 });
 
-// Add a Note
+// Add a Note (Fixed the bug req.user was not destructured)
 app.post("/add-note", authenticateToken, async (req, res) => {
   const { title, content, tags } = req.body;
-  const { user } = req.user;
+  const  { user } = req.user;
+  //Checking user Id
+  console.log("User ID is:", user._id);
 
   if (!title) {
     return res.status(400).json({ message: "Title is required" });
@@ -147,13 +146,14 @@ app.post("/add-note", authenticateToken, async (req, res) => {
   }
 
   try {
+    //Make a new Note
     const note = new Note({
       title,
       content,
       tags: tags || [],
-      userId: user._id,
+      userId: user._id
     });
-
+    
     await note.save();
 
     return res.json({
@@ -162,9 +162,10 @@ app.post("/add-note", authenticateToken, async (req, res) => {
       message: "Note added successfully",
     });
   } catch (error) {
+    console.error("Error adding note:", error);
     return res.status(500).json({
       error: true,
-      message: "Internal Server Error",
+      message: "An error occurred while saving the note",
     });
   }
 });
