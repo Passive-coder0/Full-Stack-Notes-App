@@ -1,13 +1,18 @@
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordInput from "../components/Input/PasswordInput";
 import { useState } from "react";
+import axiosInstance from "../utils/axios";
 
 function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
   async function handleSignUp(e) {
     e.preventDefault();
@@ -17,20 +22,52 @@ function SignUp() {
       return;
     }
 
-    if (!email) {
-      setError("Please enter your email");
+    if (!email || !validateEmail(email)) {
+      setError("Please enter a valid email address");
       return;
     }
 
-    if (!password) {
-      setError("Please enter your new password");
+    if (!password || password.length < 6) {
+      setError("Password must be at least 6 characters");
       return;
     }
 
     setError("");
 
     // SignUp API Call
-  }
+    try {
+      const response = await axiosInstance.post(
+        "/create-account",
+        {
+          fullName: name,
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      //Handle error
+      if (response.data && response.data.error) {
+        setError(response.data.message);
+        return
+      }
+
+    if (response.data && response.data.accessToken) {
+      localStorage.setItem("token", response.data.accessToken)
+      navigate("/dashboard")
+    }
+    } catch (error) {
+      console.error("Sign up error:", error);
+      const message =
+        error.response?.data?.message ||
+        "An unexpected error occurred. Please try again.";
+      setError(message);
+    }
+  };
 
   return (
     <>

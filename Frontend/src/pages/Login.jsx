@@ -1,8 +1,8 @@
 import PasswordInput from "../components/Input/PasswordInput";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import axiosInstance from "../utils/axios";
 
 function Login() {
   // For controlled components
@@ -10,22 +10,52 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-let handleLogin = async (e) => {
-  e.preventDefault();
+  const navigate = useNavigate();
 
-  if (!email) {
-    setError("Please enter your email");
-    return;
-  }
-  
-  if (!password) {
-    setError("Please enter the password");
-    return
-  }
-  setError("")
+  const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
-  //Login API call
-}
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!email || !validateEmail(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    if (!password || password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+    setError("");
+
+    //Login API call (Using axios)
+    try {
+      const response = await axiosInstance.post(
+        "/login",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json", // This bug was a headache
+          },
+        }
+      );
+
+      //Handle successful login
+      if (response.data && response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      const message =
+        error.response?.data?.message ||
+        "An unexpected error occurred. Please try again.";
+      setError(message);
+    }
+  };
 
   return (
     <>
@@ -35,11 +65,22 @@ let handleLogin = async (e) => {
           <form onSubmit={handleLogin} action="post">
             <h4 className="text-2xl mb-2">Login</h4>
 
-            <input type="email" placeholder="Email" className="input-box" value={email}
-            onChange={(e) => {setEmail(e.target.value)}} />
+            <input
+              type="email"
+              placeholder="Email"
+              className="input-box"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
 
-            <PasswordInput value={password}
-            onChange={(e)=> {setPassword(e.target.value)}} />
+            <PasswordInput
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
 
             {/*Handle our custom error*/}
             {error && <p className="text-red-500 text-xs pb-1">{error}</p>}

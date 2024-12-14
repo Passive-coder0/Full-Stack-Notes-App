@@ -1,22 +1,58 @@
 import { useState } from "react";
 import TagInput from "./Input/TagInput";
 import { MdClose } from "react-icons/md";
+import axiosInstance from "../utils/axios";
 
-function AddEditNotes({onClose, noteData, type}) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [tags, setTags] = useState([]);
+function AddEditNotes({onClose, noteData, type, getAllNotes, showToastMessage}) {
+  //Empty for adding, value for editing
+  const [title, setTitle] = useState(noteData?.title || "");
+  const [content, setContent] = useState(noteData?.content || "");
+  const [tags, setTags] = useState(noteData?.tags || []);
 
   const [error, setError] = useState(null)
 
   // Add Note
   const addNewNote = async () => {
-    
+    try {
+      const response = await axiosInstance.post("add-note", {
+        title,
+        content,
+        tags,
+      });
+
+      if (response.data.note) {
+        showToastMessage("Note Added Successfully")
+        getAllNotes()
+        onClose()
+      }
+    } catch (error) {
+      if (error.response.data.message) {
+        setError(error.response.data.message);
+      }
+    }
   }
 
    // Edit Note
    const editNote = async () => {
-    
+    const noteId = noteData._id;
+
+    try {
+      const response = await axiosInstance.put(`edit-note/${noteId}`, {
+        title,
+        content,
+        tags,
+      });
+
+      if (response.data.note) {
+        showToastMessage("Note Updated Successfully")
+        getAllNotes()
+        onClose()
+      }
+    } catch (error) {
+      if (error.response.data.message) {
+        setError(error.response.data.message);
+      }
+    }
    }
 
   const handleAddNote = () => {
@@ -32,7 +68,7 @@ function AddEditNotes({onClose, noteData, type}) {
     setError("")
 
     if (type === 'edit') {
-      EditNote()
+      editNote()
     }
     else {
       addNewNote()
@@ -50,8 +86,8 @@ function AddEditNotes({onClose, noteData, type}) {
         <label className="input-label">TITLE</label>
         <input
           type="text"
-          className="text-2xl text-slate-950 outline-none"
-          placeholder="Go To Gym At 5"
+          className="text-lg text-slate-950 border p-1.5 rounded-md"
+          placeholder="Add a title for your note"
           value={title}
           onChange={(e) => {
             setTitle(e.target.value);
@@ -61,8 +97,8 @@ function AddEditNotes({onClose, noteData, type}) {
       <div className="flex flex-col gap-2 mt-4">
         <label className="input-label">CONTENT</label>
         <textarea
-          className="text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded"
-          placeholder="Content"
+          className="text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded-md"
+          placeholder="Write about your note here....."
           rows={10}
           value={content}
           onChange={(e) => {
@@ -78,7 +114,7 @@ function AddEditNotes({onClose, noteData, type}) {
           {error && <p className="text-red-500 text-xs pt-4">{error}</p>}
 
       <button className="btn-primary font-medium mt-5 p-3 " onClick={handleAddNote}>
-        ADD
+        {type === 'edit' ? 'UPDATE' : 'ADD'}
       </button>
     </div>
   );

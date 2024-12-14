@@ -19,12 +19,8 @@ db.once("open", () => console.log("Connected to database"));
 //Express parser
 app.use(express.json());
 
-//origin: "*" means that any website can access the resources on my server.
-app.use(
-  cors({
-    origin: '*',
-  })
-);
+// Will allow any website to access the resources on my server.
+app.use(cors());
 
 // Create Account
 app.post("/create-account", async (req, res) => {
@@ -79,6 +75,8 @@ app.post("/create-account", async (req, res) => {
 app.post("/login", async (req, res) => {
   // Destructuring the request
   const { email, password } = req.body;
+  console.log("Request Body:", req.body);
+
 
   if (!email) {
     return res.status(400).json({ message: "Email is required" });
@@ -96,6 +94,7 @@ app.post("/login", async (req, res) => {
   }
   if (userInfo.email == email && userInfo.password == password) {
     const user = { user: userInfo };
+
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: "36000m",
     });
@@ -109,7 +108,7 @@ app.post("/login", async (req, res) => {
   } else {
     return res.status(400).json({
       error: true,
-      message: "Invalid Credentials",
+      message: "Invalid Email or Password",
     });
   }
 });
@@ -125,7 +124,7 @@ app.get("/get-user", authenticateToken, async (req, res) => {
   }
 
   return res.json({
-    user: { fullName: isUser.fullname, email: isUser.email, _id: isUser._id },
+    user: { fullName: isUser.fullName, email: isUser.email, _id: isUser._id },
     message: "Retreived user successfully",
   });
 });
@@ -219,7 +218,7 @@ app.put("/edit-note/:noteId", authenticateToken, async (req, res) => {
 });
 
 // Get all notes
-app.get("/get-all-notes/", authenticateToken, async (req, res) => {
+app.get("/get-all-notes", authenticateToken, async (req, res) => {
   const { user } = req.user;
 
   try {
