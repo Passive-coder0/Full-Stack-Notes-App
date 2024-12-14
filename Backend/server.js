@@ -4,7 +4,7 @@ const User = require("./models/user.models");
 const Note = require("./models/notes.model");
 const mongoose = require("mongoose");
 
-const config = require("./config.json");
+const config = require("./config");
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
 const cors = require("cors");
