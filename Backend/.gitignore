@@ -1,0 +1,11 @@
+# Ignore environment files
+.env
+
+# Ignore config files becuase contains sensitive information
+config.js
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
