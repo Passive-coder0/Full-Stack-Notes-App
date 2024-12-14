@@ -1,8 +1,28 @@
-# React + Vite
+Full Stack Notes App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple notes app built with the MERN stack (MongoDB, Express.js, React, Node.js). It supports CRUD operations and allows users to pin important notes.
+Features
 
-Currently, two official plugins are available:
+    Create, Read, Update, Delete Notes
+    Pin Notes for easy access
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tech Stack
+
+    Frontend: React, Axios, Tailwind CSS
+    Backend: Node.js, Express.js, MongoDB, JWT for authentication
+
+Setup
+Frontend
+
+    Go to the client folder.
+    Run npm install and npm start.
+
+Backend
+
+    Go to the server folder.
+    Run npm install and npm start.
+
+Environment Variables
+
+    MONGO_URI: MongoDB connection string
+    JWT_SECRET: JWT secret key
