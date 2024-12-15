@@ -5,17 +5,15 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Modal from "react-modal";
 
-
 Modal.setAppElement("#root"); // Set app element globally
-
 
 //React Router
 const routes = (
   <BrowserRouter>
     <Routes>
-      <Route path="/dashboard" exact element={<Home />} />
-      <Route path="/login" exact element={<Login />} />
-      <Route path="/signup" exact element={<SignUp />} />
+      <Route path="/dashboard" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   </BrowserRouter>
 );
