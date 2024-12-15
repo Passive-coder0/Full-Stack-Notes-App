@@ -143,7 +143,7 @@ function Home() {
             Click on the blue button to add a note
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-4 mt-8">
+          <div className="flex flex-col sm:grid sm:grid-cols-3 gap-4 mt-8">
             {allNotes.map((item, index) => (
               <NoteCard
                 key={item._id}

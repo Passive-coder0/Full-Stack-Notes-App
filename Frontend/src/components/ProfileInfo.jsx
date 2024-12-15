@@ -13,7 +13,7 @@ function ProfileInfo({ userInfo, onLogout }) {
       <div className="w-12 h-12 flex items-center justify-center rounded-full text-slate-950 bg-slate-100">
         {getInitials(userInfo.fullName)}
       </div>
-      <div>
+      <div className="flex flex-col">
         <p className="text-sm font-medium">{userInfo.fullName}</p>
         <button className="text-sm text-slate-700 underline hover:text-black" onClick={onLogout}>
           Logout
