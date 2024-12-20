@@ -11,7 +11,12 @@ export default {
       colors: {
         primary : "#2B85FF",
         secondary : "#EF863E"
-      }
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -46,7 +46,7 @@ function Login() {
       //Handle successful login
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/dashboard");
+        navigate("/notes");
       }
     } catch (error) {
       console.error("Login error:", error);

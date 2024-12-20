@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Notes from "./pages/Notes";
+import Calendar from "./pages/Calendar";
+import Pomodoro from "./pages/Pomodoro";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Modal from "react-modal";
@@ -11,7 +13,9 @@ const routes = (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<SignUp />} /> {/* Default route */}
-      <Route path="/dashboard" element={<Home />} />
+      <Route path="/notes" element={<Notes />} />
+      <Route path="/calendar" element={<Calendar />} />
+      <Route path="/pomodoro" element={<Pomodoro />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
     </Routes>

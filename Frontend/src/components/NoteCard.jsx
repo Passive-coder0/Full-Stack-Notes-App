@@ -17,10 +17,14 @@ function NoteCard({
       <div className="flex items-center justify-between">
         <div>
           <h6 className="text-sm font-medium">{title}</h6>
-          <span className="text-xs text-slate-500">{moment(date).format('Do MMM YYYY')}</span>
+          <span className="text-xs text-slate-500">
+            {moment(date).format("Do MMM YYYY")}
+          </span>
         </div>
         <MdOutlinePushPin
-          className={`icon-btn ${isPinned ? "text-cyan-700" : "text-slate-300"}`}
+          className={`icon-btn ${
+            isPinned ? "text-cyan-700" : "text-slate-300"
+          }`}
           onClick={onPinNote}
         />
       </div>
@@ -29,10 +33,28 @@ function NoteCard({
 
       <div className="flex items-center justify-between mt-2">
         <div className="text-xs text-slate-500">
-          {tags.map((item, index) => (
-            <span key={index}>#{item} </span>
-          ))}
+          {tags.map((item, index) => {
+            const colors = [
+              "bg-red-100 text-red-700",
+              "bg-blue-100 text-blue-700",
+              "bg-green-100 text-green-700",
+              "bg-yellow-100 text-yellow-700",
+              "bg-purple-100 text-purple-700",
+              "bg-pink-100 text-pink-700",
+            ];
+            const randomColor =
+              colors[Math.floor(Math.random() * colors.length)];
+            return (
+              <span
+                key={index}
+                className={`px-2 py-1 rounded-full mr-1 ${randomColor}`}
+              >
+                #{item}
+              </span>
+            );
+          })}
         </div>
+
         <div className="flex items-center gap-2">
           <MdCreate
             className="icon-btn hover:text-green-600 cursor-pointer"

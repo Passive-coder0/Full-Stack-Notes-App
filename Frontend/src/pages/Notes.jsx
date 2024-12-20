@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axios";
 import Toast from "../components/Toast";
 
-function Home() {
+function Notes() {
   const [openAddedEditModal, setOpenAddedEditModal] = useState({
     isShown: false,
     type: "add",
@@ -180,7 +180,7 @@ function Home() {
           },
         }}
         contentLabel=""
-        className="w-2/5 max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-auto"
+        className="w-80 md:w-2/5 max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-auto"
       >
         <AddEditNotes
           type={openAddedEditModal.type}
@@ -203,4 +203,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Notes;
