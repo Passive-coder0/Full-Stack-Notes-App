@@ -1,0 +1,46 @@
+.signup-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .background-image1 {
+    position: absolute;
+    top: 24%;
+    left: 2%;
+    width:34%;
+    height: 45%;
+    background-image: url('/Login3.png');
+    background-size: cover; /* Ensures full container coverage */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-position: center; /* Centers the image */
+    z-index: 0; /* Places it below the form container */
+  }
+  .background-image2 {
+    position: absolute;
+    top: 10%;
+    right: -2%;
+    width:45%;
+    height: 60%;
+    background-image: url('/Login4.png');
+    background-size: cover; /* Ensures full container coverage */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-position: center; /* Centers the image */
+    z-index: 0; /* Places it below the form container */
+  }
+  
+  .form-container {
+    position: relative;
+    z-index: 1; /* Ensures the form is above the background image */
+  }
+  
