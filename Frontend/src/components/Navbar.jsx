@@ -35,7 +35,7 @@ function Navbar({ userInfo }) {
 
   return (
     <div
-      className="bg-white/90 dark:bg-gradient-to-b from-black to-gray-900
+      className="bg-white/90 dark:bg-transparent
       backdrop-blur-md border-b border-gray-300 dark:border-gray-900 flex items-center justify-between px-6 py-2 drop-shadow-sm"
     >
       <div className="flex items-center">

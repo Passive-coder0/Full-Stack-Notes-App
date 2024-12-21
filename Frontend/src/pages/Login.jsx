@@ -55,8 +55,8 @@ function Login() {
     <>
       <Navbar />
       <div className="login-page">
-      <div className="background-image1 dark:background-image3"></div>
-      <div className="background-image2 dark:background-image4"></div>
+        <div className="background-image1"></div>
+        <div className="background-image2"></div>
         <div className="form-container">
           <div className="w-80 md:w-96 border dark:border-purple-950 rounded bg-white dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:text-white px-7 py-8">
             <form onSubmit={handleLogin}>
@@ -73,8 +73,10 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
-              <button type="submit" className="btn-primary dark:btn-primary-dark
-    }">
+              <button
+                type="submit"
+                className="btn-primary dark:btn-primary-dark}"
+              >
                 Login
               </button>
               <div className="flex justify-center items-center text-sm mt-4 gap-2">

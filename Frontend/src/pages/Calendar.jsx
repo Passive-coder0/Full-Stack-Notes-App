@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import axiosInstance from "../utils/axios";
 import { useNavigate } from "react-router-dom";
+import Digital from "../components/Digital";
 
 
 function Calendar() {
@@ -69,7 +70,8 @@ function Calendar() {
   return (
     <>
       <Navbar userInfo={userInfo}></Navbar>
-      <div className="calendar-container dark:text-white p-4 text-center">
+      <div className="flex flex-col justify-start items-center">
+      <div className="calendar-container dark:text-white p-4 text-center w-screen mb-24">
         <div className="mb-4 flex justify-between items-center">
           <button
             onClick={() => changeMonth(-1)}
@@ -105,6 +107,8 @@ function Calendar() {
             </div>
           ))}
         </div>
+      </div>
+      <Digital></Digital>
       </div>
     </>
   );

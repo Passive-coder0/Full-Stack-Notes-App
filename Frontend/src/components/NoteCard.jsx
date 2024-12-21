@@ -13,11 +13,11 @@ function NoteCard({
   onPinNote,
 }) {
   return (
-    <div className="border rounded p-4 bg-white hover:shadow-xl transition-all ease-in-out">
+    <div className="border rounded p-4 bg-white hover:shadow-xl dark:bg-[rgba(255,255,255,0.1)]  dark:border-[rgba(255,255,255,0.2)]  dark:text-white transition-all ease-in-out flex flex-col justify-between">
       <div className="flex items-center justify-between">
         <div>
           <h6 className="text-sm font-medium">{title}</h6>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-500 dark:text-slate-200">
             {moment(date).format("Do MMM YYYY")}
           </span>
         </div>
@@ -29,7 +29,7 @@ function NoteCard({
         />
       </div>
       {/* Will show max 60 characters of content */}
-      <p className="text-xs text-slate-600 mt-2">{content?.slice(0, 60)}</p>
+      <p className="text-xs text-slate-700 dark:text-slate-100 my-3">{content}</p>
 
       <div className="flex items-center justify-between mt-2">
         <div className="text-xs text-slate-500">
