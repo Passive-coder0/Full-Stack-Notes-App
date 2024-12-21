@@ -21,10 +21,10 @@
     width:34%;
     height: 45%;
     background-image: url('/Login3.png');
-    background-size: cover; /* Ensures full container coverage */
-    background-repeat: no-repeat; /* Prevents tiling */
-    background-position: center; /* Centers the image */
-    z-index: 0; /* Places it below the form container */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0; /* Places BG Image below my content*/
   }
   .background-image2 {
     position: absolute;
@@ -33,14 +33,38 @@
     width:45%;
     height: 60%;
     background-image: url('/Login4.png');
-    background-size: cover; /* Ensures full container coverage */
-    background-repeat: no-repeat; /* Prevents tiling */
-    background-position: center; /* Centers the image */
-    z-index: 0; /* Places it below the form container */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+  }
+  .background-image3 {
+    position: absolute;
+    top: 10%;
+    right: -2%;
+    width:45%;
+    height: 60%;
+    background-image: url('/Pomodoro1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+  }
+  .background-image3 {
+    position: absolute;
+    top: 10%;
+    right: -2%;
+    width:45%;
+    height: 60%;
+    background-image: url('/Pomodoro2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
   }
   
   .form-container {
     position: relative;
-    z-index: 1; /* Ensures the form is above the background image */
+    z-index: 1; /* Places above the BG Image */
   }
   

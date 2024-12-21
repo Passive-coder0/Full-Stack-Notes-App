@@ -78,7 +78,7 @@ function AddEditNotes({onClose, noteData, type, getAllNotes, showToastMessage}) 
   return (
     <div className="relative">
 
-      <button className="w-10 h-10 rounded-full flex items-center justify-center absolute -top-3 -right-3 hover:bg-slate-50" onClick={onClose}>
+      <button className="w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -right-3 hover:bg-slate-100" onClick={onClose}>
         <MdClose className="text-xl text-slate-400"></MdClose>
       </button>
 
@@ -86,7 +86,7 @@ function AddEditNotes({onClose, noteData, type, getAllNotes, showToastMessage}) 
         <label className="input-label">TITLE</label>
         <input
           type="text"
-          className="text-lg text-slate-950 border p-1.5 rounded-md"
+          className="text-lg bg-slate-100 border-2 text-slate-950 p-1.5 rounded-md"
           placeholder="Add a title for your note"
           value={title}
           onChange={(e) => {
@@ -97,7 +97,7 @@ function AddEditNotes({onClose, noteData, type, getAllNotes, showToastMessage}) 
       <div className="flex flex-col gap-2 mt-4">
         <label className="input-label">CONTENT</label>
         <textarea
-          className="text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded-md"
+          className="text-sm text-slate-950 outline-none bg-slate-100 p-2 rounded-md border-2"
           placeholder="Write about your note here....."
           rows={10}
           value={content}

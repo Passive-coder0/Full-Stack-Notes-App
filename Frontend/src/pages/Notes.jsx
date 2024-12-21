@@ -136,7 +136,7 @@ function Notes() {
     <>
       <Navbar userInfo={userInfo}></Navbar>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto md:px-10">
         {/* Show a message if there are no notes */}
         {allNotes.length === 0 ? (
           <div className="flex justify-center items-center text-center text-slate-400 text-3xl mt-64">
@@ -163,7 +163,7 @@ function Notes() {
 
       {/*To show and hide the Edit modal */}
       <button
-        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-blue-600 absolute right-10 bottom-10"
+        className="w-16 h-16 flex items-center justify-center rounded-2xl dark:bg-blue-950 bg-primary hover:bg-blue-600 dark:hover:bg-blue-900 absolute right-10 bottom-10"
         onClick={() => {
           setOpenAddedEditModal({ isShown: true, type: "add", data: null });
         }}

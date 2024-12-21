@@ -69,11 +69,11 @@ function Calendar() {
   return (
     <>
       <Navbar userInfo={userInfo}></Navbar>
-      <div className="calendar-container p-4 text-center">
+      <div className="calendar-container dark:text-white p-4 text-center">
         <div className="mb-4 flex justify-between items-center">
           <button
             onClick={() => changeMonth(-1)}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-blue-500 dark:bg-violet-900 text-white px-4 py-2 rounded hover:bg-blue-600 hover:dark:bg-violet-800"
           >
             Prev
           </button>
@@ -83,7 +83,7 @@ function Calendar() {
           </h2>
           <button
             onClick={() => changeMonth(1)}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-blue-500 dark:bg-violet-900 text-white px-4 py-2 rounded hover:bg-blue-600 hover:dark:bg-violet-800"
           >
             Next
           </button>
@@ -98,7 +98,7 @@ function Calendar() {
             <div
               key={day.toISOString()}
               className={`p-2 rounded ${
-                isToday(day) ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+                isToday(day) ? "bg-blue-500 dark:bg-violet-800 text-white" : "hover:bg-gray-400"
               }`}
             >
               {day.getDate()}

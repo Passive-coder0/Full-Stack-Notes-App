@@ -96,32 +96,24 @@ function Pomodoro() {
   return (
     <>
       <Navbar userInfo={userInfo} ></Navbar>
-      <div className="pomodoro-container text-center p-4 mt-28">
-      <h1 className="text-2xl font-bold mb-4">Pomodoro Timer</h1>
+      <div className="pomodoro-container text-center p-4 mt-24">
+      <h1 className="text-3xl dark:text-white font-bold mb-6">Pomodoro Timer</h1>
 
-      <div className="relative w-64 h-64 mx-auto">
+      <div className="relative w-64 h-64 mx-auto mb-6">
         <svg className="absolute top-0 left-0" width="100%" height="100%" viewBox="0 0 220 220">
           <circle
             cx="110"
             cy="110"
             r="100"
             fill="none"
-            stroke="#e6e6e6"
-            strokeWidth="10"
-          />
-          <circle
-            cx="110"
-            cy="110"
-            r="100"
-            fill="none"
-            stroke="#3b82f6"
-            strokeWidth="10"
+            stroke= "#5b21b6"
+            strokeWidth="14"
             strokeDasharray={circumference}
             strokeDashoffset={circumference - progress}
             strokeLinecap="round"
           />
         </svg>
-        <div className="absolute inset-0 flex items-center justify-center text-5xl font text-blue-600 font-roboto">
+        <div className="absolute inset-0 flex items-center justify-center text-5xl font dark:text-white font-roboto">
           {formatTime(time)}
         </div>
       </div>
@@ -129,30 +121,31 @@ function Pomodoro() {
       <div className="mt-4">
         <button
           onClick={toggleTimer}
-          className={`px-4 py-2 rounded text-white ${
-            isRunning ? "bg-red-500 hover:bg-red-600" : "bg-green-500 hover:bg-green-600"
+          className={`px-5 py-2 text-lg rounded text-white ${
+            isRunning ? "bg-red-700 hover:bg-red-800" : "bg-violet-800 hover:bg-violet-900 dark:bg-violet-800 hover:dark:bg-violet-900"
           }`}
         >
           {isRunning ? "Pause" : "Start"}
         </button>
         <button
           onClick={resetTimer}
-          className="ml-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+          className="ml-4 px-5 py-2 text-lg bg-gray-700 text-white rounded hover:bg-gray-800"
         >
           Reset
         </button>
       </div>
 
       <div className="mt-4">
-        <label htmlFor="custom-time" className="mr-2 font-semibold">
+        <label htmlFor="custom-time" className="mr-2 dark:text-white font-semibold">
           Set Timer (minutes):
         </label>
         <input
           id="custom-time"
           type="number"
+          max={30}
           value={customMinutes}
           onChange={handleTimeChange}
-          className="w-20 p-2 border rounded text-center"
+          className="w-20 p-2 text-lg border dark:bg-slate-950 dark:text-white dark:border-violet-950 dark:border-2 rounded text-center"
         />
       </div>
     </div>

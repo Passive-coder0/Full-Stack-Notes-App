@@ -50,7 +50,7 @@ function TagInput({ tags, setTags }) {
         <input
           type="text"
           value={inputValue}
-          className="text-sm bg-transparent border px-3 py-3 rounded outline-none"
+          className="text-sm bg-slate-100 border-2 px-3 py-3 rounded outline-none"
           placeholder="Add Tags"
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
