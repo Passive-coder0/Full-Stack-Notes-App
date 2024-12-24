@@ -20,15 +20,17 @@
 /* Reusable custom component styles using Tailwind utilities */
 @layer components {
     .input-box {
-        @apply w-full text-sm bg-transparent border-[1.5px] px-5 py-3 rounded mb-4 outline-none;
+        @apply w-full text-sm bg-transparent border-[2px] border-gray-300 px-5 py-3 rounded mb-4 outline-none;
     }
 
     .btn-primary {
-        @apply w-full text-sm bg-blue-500 text-white p-2 rounded my-1 hover:bg-blue-600;
-    }
-    .btn-primary-dark {
-        @apply w-full text-sm bg-violet-950 text-white p-2 rounded my-1 hover:bg-violet-900;
-    }
+        @apply w-full text-white bg-gradient-to-r from-[rgb(43,133,255)] via-[rgb(33,115,240)] to-[rgb(23,100,225)] hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-[rgb(43,133,255)]/50 shadow-lg shadow-[rgb(43,133,255)]/40 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2;
+      }
+      
+      .btn-primary-dark {
+        @apply w-full text-white bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-400 dark:focus:ring-purple-900 shadow-lg shadow-purple-600/50 dark:shadow-lg dark:shadow-purple-900/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2;
+      }
+      
     .icon-btn {
         @apply text-xl text-slate-300 cursor-pointer hover:text-primary
     }

@@ -75,7 +75,7 @@ function Calendar() {
         <div className="mb-4 flex justify-between items-center">
           <button
             onClick={() => changeMonth(-1)}
-            className="bg-blue-500 dark:bg-violet-900 text-white px-4 py-2 rounded hover:bg-blue-600 hover:dark:bg-violet-800"
+            className="btn-primary w-20 dark:btn-primary-dark dark:w-20"
           >
             Prev
           </button>
@@ -85,7 +85,7 @@ function Calendar() {
           </h2>
           <button
             onClick={() => changeMonth(1)}
-            className="bg-blue-500 dark:bg-violet-900 text-white px-4 py-2 rounded hover:bg-blue-600 hover:dark:bg-violet-800"
+            className="btn-primary w-20 dark:btn-primary-dark dark:w-20"
           >
             Next
           </button>

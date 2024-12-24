@@ -3,44 +3,47 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .login-page {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  position: relative;
+  z-index: 1; /* Places above the BG Image */
+}
+
+.image-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 800px) {
   .background-image1 {
-    position: absolute;
-    top: 14%;
-    left: 3%;
-    width:32%;
-    height: 63%;
-    background-image: url('/Login1.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 0; /* Places BG Image below my content*/
+    display: none;
   }
   .background-image2 {
-    position: absolute;
-    top: 13%;
-    right: -1%;
-    width:43%;
-    height: 64%;
-    background-image: url('/Login4.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 0;
+    display: none;
   }
-  
-  .form-container {
-    position: relative;
-    z-index: 1; /* Places above the BG Image */
+  .image-container {
+    height: 200px; /* Adjust container height for smaller screens */
   }
-  
+}
+
+@media (max-width: 500px) {
+  .image-container {
+    height: 150px; /* Further adjustment for very small screens */
+  }
+}

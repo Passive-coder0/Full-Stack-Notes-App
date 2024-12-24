@@ -23,7 +23,7 @@ function Toast({ isShown, message, type, onClose }) {
       }`}
     >
       <div
-        className={`min-w-52 bg-white border shadow-2xl rounded-md after:w-1 after:h-full ${
+        className={`min-w-52 bg-white dark:bg-slate-800 border dark:border-none shadow-2xl dark:shadow-[0_4px_15px_rgba(255,255,255,0.2)] rounded-md after:w-1 after:h-full ${
           type === "delete" ? "after:bg-red-500" : "after:bg-green-500"
         }
         after:absolute after:left-0 after:top-0 after:rounded-l-lg `}
@@ -31,17 +31,17 @@ function Toast({ isShown, message, type, onClose }) {
         <div className="flex items-center gap-3 py-2 px-4">
           <div
             className={`w-10 h-10 flex items-center justify-center rounded-full ${
-              type === "delete" ? "bg-red-100" : "bg-green-100"
+              type === "delete" ? "bg-red-100 dark:bg-red-300" : "bg-green-100 dark:bg-green-300"
             }`}
           >
             {type === "delete" ? (
-              <MdDeleteOutline className="text-xl text-red-500" />
+              <MdDeleteOutline className="text-xl text-red-500 dark:text-red-700" />
             ) : (
-              <LuCheck className="text-xl text-green-500" />
+              <LuCheck className="text-xl text-green-500 dark:text-green-700" />
             )}
           </div>
 
-          <p className="text-sm text-slate-800">{message}</p>
+          <p className="text-sm text-slate-800 dark:text-white">{message}</p>
         </div>
       </div>
     </div>

@@ -62,12 +62,13 @@ function SignUp() {
   return (
     <>
       <Navbar />
-      <div className="signup-page">
-        <div className="background-image1 dark:background-image3"></div>
-        <div className="background-image2 dark:background-image4"></div>
+      <div className="signup-page mt-8">
         <div className="form-container">
-          <div className="w-80 sm:w-96 border dark:border-violet-950 rounded bg-white dark:bg-neutral-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:text-white px-7 py-8">
-            <form onSubmit={handleSignUp}>
+          <div className="w-80 md:w-96 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:shadow-[0_3px_10px_rgba(255,255,255,0.05)] bg-slate-50 dark:bg-slate-950 dark:text-white">
+          <div className="image-container rounded-t-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:shadow-[0_3px_10px_rgba(255,255,255,0.05)]">
+              <img src="Air.jpg" alt="" />
+            </div>
+            <form className="px-7 py-8" onSubmit={handleSignUp}>
               <h4 className="text-2xl mb-4">Sign Up</h4>
               <input
                 type="text"
@@ -88,14 +89,17 @@ function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
-              <button type="submit" className="btn-primary dark:btn-primary-dark">
+              <button
+                type="submit"
+                className="btn-primary dark:btn-primary-dark"
+              >
                 Create an account
               </button>
               <div className="flex justify-center items-center text-sm mt-4 gap-2">
                 <p>Already have an account?</p>
                 <Link
                   to="/login"
-                  className="font-medium text-primary underline dark:text-violet-800"
+                  className="font-medium text-primary underline dark:text-violet-600 hover:text-blue-600 dark:hover:text-violet-800"
                 >
                   Login
                 </Link>
