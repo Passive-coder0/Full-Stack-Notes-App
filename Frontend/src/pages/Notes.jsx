@@ -136,7 +136,7 @@ function Notes() {
     <>
       <Navbar userInfo={userInfo}></Navbar>
 
-      <div className="container mx-auto md:px-10">
+      <div className="container mx-auto md:px-10 lg:mx-0">
         {/* Show a message if there are no notes */}
         {allNotes.length === 0 ? (
           <div className="flex justify-center items-center text-center text-slate-400 text-3xl mt-64">

@@ -21,7 +21,7 @@ function NoteCard({
             {moment(date).format("Do MMM YYYY")}
           </span>
         </div>
-        <MdOutlinePushPin
+        <MdPushPin
           className={`icon-btn ${
             isPinned ? "text-cyan-700" : "text-slate-300"
           }`}

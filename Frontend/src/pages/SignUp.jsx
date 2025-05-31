@@ -48,7 +48,7 @@ function SignUp() {
 
       if (response.data?.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/dashboard");
+        navigate("/notes");
       }
     } catch (error) {
       console.error("Sign up error:", error);
@@ -65,14 +65,14 @@ function SignUp() {
       <div className="signup-page mt-8">
         <div className="form-container">
           <div className="w-80 md:w-96 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:shadow-[0_3px_10px_rgba(255,255,255,0.05)] bg-slate-50 dark:bg-slate-950 dark:text-white">
-          <div className="image-container rounded-t-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:shadow-[0_3px_10px_rgba(255,255,255,0.05)]">
+            <div className="image-container rounded-t-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:shadow-[0_3px_10px_rgba(255,255,255,0.05)]">
               <img src="Air.jpg" alt="" />
             </div>
             <form className="px-7 py-8" onSubmit={handleSignUp}>
               <h4 className="text-2xl mb-4">Sign Up</h4>
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="input-box"
