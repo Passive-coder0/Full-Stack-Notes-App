@@ -6,7 +6,7 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 function Navbar({ userInfo }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // I made Menu initially closed
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // I made Menu Initially closed
   const [isDarkMode, setIsDarkMode] = useState(
     document.documentElement.classList.contains("dark")
   ); // Check the initial theme
@@ -41,6 +41,8 @@ function Navbar({ userInfo }) {
       <div className="flex items-center">
           {/* Logo and App Name */}
           <div className="flex items-center mr-6">
+          
+          
           {/* Zen Logo - SVG */}
           <div className="mr-3 h-10 w-10 my-1.5 flex items-center justify-center">
             <svg
@@ -48,7 +50,6 @@ function Navbar({ userInfo }) {
               className="w-full h-full"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Outer circle - represents completeness and unity */}
               <circle
                 cx="50"
                 cy="50"
@@ -58,8 +59,6 @@ function Navbar({ userInfo }) {
                 strokeWidth="3"
                 className="text-gray-600 dark:text-gray-300"
               />
-              
-              {/* Inner zen stone/mountain */}
               <path
                 d="M20 70 Q35 30, 50 50 Q65 30, 80 70 Z"
                 fill="currentColor"

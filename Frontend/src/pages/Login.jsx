@@ -48,6 +48,7 @@ function Login() {
         setError(message);
       }
     },
+    
     [email, password, navigate, validateEmail]
   );
 

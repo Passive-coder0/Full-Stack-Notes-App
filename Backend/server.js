@@ -22,6 +22,13 @@ app.use(express.json());
 // Will allow any website to access the resources on my server.
 app.use(cors());
 
+app.get("/health", (req, res) => {
+  return res.status(200).json({
+    error: false,
+    message: "OK",
+  });
+});
+
 // Create Account
 app.post("/create-account", async (req, res) => {
   //Destructuring the request
@@ -43,13 +50,14 @@ app.post("/create-account", async (req, res) => {
 
   //Finds the user with this email
   const isUser = await User.findOne({ email: email });
-
   if (isUser) {
     return res.json({
       error: true,
       message: "User already exists",
     });
   }
+
+  // Creates a new user
   const user = new User({
     fullName,
     email,
@@ -61,7 +69,6 @@ app.post("/create-account", async (req, res) => {
   const accessToken = jwt.sign({ user }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "30m",
   });
-
 
   return res.json({
     error: false,
@@ -76,7 +83,6 @@ app.post("/login", async (req, res) => {
   // Destructuring the request
   const { email, password } = req.body;
   console.log("Request Body:", req.body);
-
 
   if (!email) {
     return res.status(400).json({ message: "Email is required" });
@@ -132,7 +138,7 @@ app.get("/get-user", authenticateToken, async (req, res) => {
 // Add a Note (Fixed the bug req.user was not destructured)
 app.post("/add-note", authenticateToken, async (req, res) => {
   const { title, content, tags } = req.body;
-  const  { user } = req.user;
+  const { user } = req.user;
   //Checking user Id
   console.log("User ID is:", user._id);
 
@@ -150,9 +156,9 @@ app.post("/add-note", authenticateToken, async (req, res) => {
       title,
       content,
       tags: tags || [],
-      userId: user._id
+      userId: user._id,
     });
-    
+
     await note.save();
 
     return res.json({
@@ -299,8 +305,10 @@ app.put("/update-note-pinned/:noteId", authenticateToken, async (req, res) => {
   }
 });
 
-app.listen(8000, () => {
-  console.log("Server has started on port 8000");
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  console.log(`Server has started on port ${port}`);
 });
 
 module.exports = app;
